@@ -1,0 +1,13 @@
+html, body{
+    display:inline-block;
+    height:100%;
+    width:100%;
+}
+.content{
+    display:block;
+    box-sizing:border-box;
+    padding:80px 0 ;
+    width: 90%;
+    margin: auto;
+}
+

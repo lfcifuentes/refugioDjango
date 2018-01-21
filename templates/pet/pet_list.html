@@ -1,0 +1,52 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+    {% if object_list %}
+        <table class="table table-hover table-bordered table-striped">
+            <thead>
+                <th>#</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Sex</th>
+                <th>Rescue Date</th>
+                <th>Person</th>
+                <th colspan="2" style="text-align:center">
+                    Actions
+                </th>
+            </thead>
+            <tbody>
+            {%  for pet in object_list %}
+                <tr>
+                    <td>{{ pet.id }}</td>
+                    <td>{{ pet.name }}</td>
+                    <td>{{ pet.approximated_age }}</td>
+                    <td>{{ pet.sex }}</td>
+                    <td>{{ pet.rescue_date }}</td>
+                    <td>
+                        {{ pet.person.name }}
+                        {{ pet.person.last_name }}
+                    </td>
+                    <td width="5%" style="padding:0">
+                        <a href="{% url 'pet:edit' pet.id %}" class="btn btn-primary btn-block" data-toggle="tooltip" title="Edit">
+                            <i class="fa fa-pencil-alt"></i>
+                            Edit
+                        </a>
+                    </td>
+                    <td width="5%" style="padding:0">
+                        <a href="{% url 'pet:delete' pet.id %}" class="btn btn-danger btn-block" data-toggle="tooltip" title="Delete">
+                            <i class="fa fa-trash"></i>
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-warning">
+            No found data
+        </div>
+    {% endif %}
+
+{% endblock %}
