@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<form action="" method="post">
+    {%   csrf_token %}
+    <h3>do you want to remove the request # {{ request.id }} of {{ request.person.name }}?</h3>
+    <div class="text-center">
+        <button class="btn btn-danger">
+           <i class="fa fa-trash"></i>
+            Delete
+        </button>
+        <a href="{% url 'adoption:request_list'  %}" class="btn btn-secondary">
+            <i class="fa fa-ban"></i>
+            Cancelar
+        </a>
+    </div>
+</form>
+{% endblock %}

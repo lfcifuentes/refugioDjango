@@ -17,3 +17,9 @@ class Person(models.Model):
 
     def __str__(self):
         return '{} {}'.format(self.name, self.last_name)
+
+
+class Request(models.Model):
+    person = models.ForeignKey(Person, null=True, blank=True)
+    number_pet = models.IntegerField()
+    reasons = models.TextField()
