@@ -1,0 +1,45 @@
+{% extends 'base/login.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block content %}
+    <form action="" method="POST" class="card w-50 m-auto mt-4">
+        {% csrf_token %}
+        <div class="row card-body">
+            <b class="col-5">User:</b>
+            <div class="col-7">
+                <input type="text" class="form-control" name="username">
+            </div>
+            <b class="col-5 mt-2">Password</b>
+            <div class="col-7 mt-2">
+                <input type="password" class="form-control" name="password">
+            </div>
+            <div class="col-12 mt-2 text-center">
+                <button class="btn btn-dark">
+                    <i class="fa fa-sign-in-alt"></i>
+                    Log In
+                </button>
+            </div>
+            <div class="col-12">
+                {% if form.errors %}
+                    <ul class='form-errors alert alert-danger'>
+                        {% for error in form.non_field_errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </form>
+{% endblock %}
